@@ -1,20 +1,20 @@
-const btn = document.querySelectorAll("#rotateBtn");
+const btn = document.querySelectorAll(".Btn");
 
 btn.forEach((button) => {
-  let boolType = false;
   button.addEventListener("click", function () {
     const content = this.nextElementSibling;
 
-    if (!boolType) {
-      content.style.maxHeight = content.scrollHeight + "px";
-      content.style.transform = "rotate(0deg)";
-      boolType = true;
+    const close = content.style.maxHeight === "50px"
+
+    btn.forEach((o) => {
+      const c = o.nextElementSibling
+      c.style.maxHeight = "0px"
+      o.textContent = "Развернуть";
+    })
+
+    if (!close) {
+      content.style.maxHeight = "50px";
       this.textContent = "Свернуть";
-    } else {
-      content.style.maxHeight = "0";
-      content.style.transform = "rotate(0deg)";
-      boolType = false;
-      this.textContent = "Развернуть";
     }
   });
 });
